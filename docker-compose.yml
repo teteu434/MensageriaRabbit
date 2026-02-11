@@ -1,0 +1,73 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: appuser
+      RABBITMQ_DEFAULT_PASS: apppass
+    networks:
+      - rabbitnet
+
+  producer:
+    build:
+      context: .
+      dockerfile: src/Producer/Dockerfile
+    container_name: producer
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBIT_HOST: rabbitmq
+      RABBIT_USER: appuser
+      RABBIT_PASS: apppass
+    networks:
+      - rabbitnet
+    stdin_open: true
+    tty: true
+
+  consumer1:
+    build:
+      context: .
+      dockerfile: src/Consumer1/Dockerfile
+    container_name: consumer1
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBIT_HOST: rabbitmq
+      RABBIT_USER: appuser
+      RABBIT_PASS: apppass
+    networks:
+      - rabbitnet
+
+  consumer2:
+    build:
+      context: .
+      dockerfile: src/Consumer2/Dockerfile
+    container_name: consumer2
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBIT_HOST: rabbitmq
+      RABBIT_USER: appuser
+      RABBIT_PASS: apppass
+    networks:
+      - rabbitnet
+
+  consumer3:
+    build:
+      context: .
+      dockerfile: src/Consumer3/Dockerfile
+    container_name: consumer3
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBIT_HOST: rabbitmq
+      RABBIT_USER: appuser
+      RABBIT_PASS: apppass
+    networks:
+      - rabbitnet
+
+networks:
+  rabbitnet:
