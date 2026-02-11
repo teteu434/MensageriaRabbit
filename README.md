@@ -1,4 +1,4 @@
-﻿﻿# Mensageria Rabbit
+# 🐰 Mensageria com RabbitMQ + .NET + Docker
 
 Este projeto é um exemplo simples de comunicação assíncrona usando RabbitMQ com:
 
