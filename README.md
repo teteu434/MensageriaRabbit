@@ -28,22 +28,22 @@ MensageriaRabbit/
 └── src/
     ├── Producer/
     │   ├── Program.cs
-    │   └── Dockerfile
+    │   ├── Dockerfile
     │   └── Producer.csproj
     │
     ├── Consumer1/
     │   ├── Program.cs
-    │   └── Dockerfile
+    │   ├── Dockerfile
     │   └── Producer.csproj
     │
     ├── Consumer2/
     │   ├── Program.cs
-    │   └── Dockerfile
+    │   ├── Dockerfile
     │   └── Producer.csproj
     │
     └── Consumer3/
         ├── Program.cs
-        └── Dockerfile
+        ├── Dockerfile
         └── Producer.csproj
 
 ```
